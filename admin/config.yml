@@ -1,0 +1,53 @@
+backend:
+  name: github
+  repo: Nhuella-cc111/cc-portal            # ej: Nhuella-cc111/cc-portal
+  branch: main
+  base_url: https://<TU_OAUTH>.onrender.com  # URL base de tu OAuth proxy desplegado en Render
+  auth_endpoint: auth             # el proxy debe exponer /auth y /callback
+  site_domain: https://<USER>.github.io  # dominio de Pages (o tu dominio custom)
+
+publish_mode: editorial_workflow   # opcional: agrega borradores/revisiones
+
+media_folder: "assets/uploads"     # dónde se guardan en el repo
+public_folder: "/assets/uploads"   # cómo se referencian en el sitio
+
+logo_url: "https://amjskrqaoiuabscecmji.supabase.co/storage/v1/object/public/logos/isologo-CC_arcoiris.png"
+site_url: "https://<USER>.github.io/<REPO>/"
+display_url: "https://<USER>.github.io/<REPO>/"
+locale: 'es'
+
+# Colecciones básicas para que el equipo cree páginas sin código
+collections:
+  - name: "paginas"
+    label: "Páginas"
+    label_singular: "Página"
+    folder: "paginas"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Permalink (opcional)", name: "permalink", widget: "string", required: false, hint: "/mi-pagina/" }
+      - { label: "Imagen de portada", name: "cover", widget: "image", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "faq"
+    label: "Preguntas Frecuentes"
+    folder: "faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Pregunta", name: "title", widget: "string" }
+      - { label: "Respuesta", name: "body", widget: "markdown" }
+
+  - name: "novedades"
+    label: "Novedades"
+    folder: "novedades"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Resumen", name: "summary", widget: "text", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+      - { label: "Imagen", name: "cover", widget: "image", required: false }

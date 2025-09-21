@@ -1,0 +1,17 @@
+title: "Carnet Cósmico"
+description: "Portal y contenidos del CC"
+# Tema GitHub Pages simple (sin Gemfile)
+theme: jekyll-theme-cayman
+
+# Declaramos una colección 'paginas' que se publica como HTML
+collections:
+  paginas:
+    output: true
+
+# Valores por defecto para la colección
+defaults:
+  - scope:
+      path: ""
+      type: paginas
+    values:
+      layout: page
